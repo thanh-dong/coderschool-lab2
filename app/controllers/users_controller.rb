@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     @user = User.new(get_user_params)
     if @user.save
       session[:user_id] = @user.id
-      render :text => 'success'
+      redirect_to users_path, flash: {success: "Welcome #{@user.name}"}
     else
-      redirect_to root_path
+      redirect_to root_path, flash: {error: "Something goes wrong. Oops!"}
     end
   end
 

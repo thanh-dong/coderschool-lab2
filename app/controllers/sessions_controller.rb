@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(password)
       session[:user_id] = user.id
-      redirect_to users_path
+      redirect_to users_path, flash: {success: "Welcome #{user.name}"}
     else
-      redirect_to login_path
+      redirect_to login_path, flash: {error: "Email or password is incorrect. Please try again!"}
     end
   end
 

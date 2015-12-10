@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :sessions
   root 'welcome#index'
   get 'welcome/index'
@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get 'login' => 'sessions#new'
   post 'dologin' => 'sessions#create'
+
+  get 'log_out' => 'sessions#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

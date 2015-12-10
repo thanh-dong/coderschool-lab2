@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_action :skipped_if_login, only: [:new]
+
   def new
   end
 

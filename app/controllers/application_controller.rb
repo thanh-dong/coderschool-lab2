@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def require_login
+    redirect_to login_path, flash: {error: 'You must sign in first to see this page.'} unless sign_in?
+  end
 
+  def skipped_if_login
+    redirect_to users_path if sign_in?
+  end
 
 end
